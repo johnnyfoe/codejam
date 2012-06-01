@@ -18,3 +18,5 @@ pickle-email-*.html
 /source/._redcar
 .project
 **/server.pid
+**/*.sqlite3
+**/log
