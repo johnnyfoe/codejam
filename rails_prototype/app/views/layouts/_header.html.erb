@@ -1,0 +1,50 @@
+<hr/>
+<header id="index_top">
+	<div id="index_header">
+		<h1><%= link_to "{Logo Here} Codej.am Prototype",  root_path, name: "Home"%></h1>
+		<p> P.S., I hate CSS</p>
+	</div>
+	<% if signed_in? %>
+		<aside>
+			<div class="avatar_div">
+				<div class="stack">
+					<div class="top">
+						<h1 id="avatar_name"><%= link_to "#{current_user.first_name} #{current_user.surname}", current_user %></h1>
+					</div>
+					<div class="dropdown_div bottom">
+						<ul>
+							<li><%= link_to "Users", users_path %>
+							<li id="fat-menu" class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><%= link_to "Profile", current_user %></li>	
+									<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+									<li class="divider"></li>
+									<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="avatar_picture">
+					<h3> <%= gravatar_for current_user%></h3>
+				</div>
+			</div>
+		</aside>
+	<% else %>
+		<%= form_for(:session, url: sessions_path) do |f|%>
+		<div class="top_div">
+			<%= f.label :email%>
+			<%= f.text_field :email%>
+		</div>
+		<div class="top_div">
+			<%= f.label :password%>
+			<%= f.password_field :password%>
+		</div>
+		<div class="top_div">
+			<p></p>
+			<%= f.submit "Sign in", class: "btn btn-medium btn-primary"%>
+		</div>
+		<% end %>
+	<% end %>
+</header>

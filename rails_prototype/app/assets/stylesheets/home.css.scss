@@ -1,0 +1,130 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html, body{
+  height: 99%; width: 100%; margin: 0; background-color:#339966; font-family:Helvetica; text-align:justify;
+}
+
+#index_top{
+  min-height:5%;
+  max-height:5%;
+  clear:both;
+  color:#ffffff;
+}
+
+#index_header{
+  margin:5px;
+  float:left;
+  width:50%;
+  a {
+    color:#ffffff;
+    text-decoration: none;
+  }
+}
+
+.top_div{
+  text-align:center;
+  float:left;
+  width:16%;
+}
+
+.dropdown_div{
+  text-align:center;
+  float:left;
+  width:8%;
+}
+
+.avatar_div{
+  vertical-align:text-top;
+  text-align:center;
+  float:left;
+  width:40%;
+  margin:2px;
+}
+
+#avatar_name{
+  float:left;
+  width:80%;
+  a {
+    text-decoration:none;
+    color:#ffffff;
+  }
+}
+
+#avatar_picture{
+  float:left;
+  width:8%;
+}
+
+.stack{
+  float:left;
+  width:80%;
+}
+
+.top{
+  clear:both;
+  width:80%;
+}
+
+.bottom{
+  clear:both;
+  width:20%;
+}
+
+#index_middle{
+  min-height:65%;
+  max-height:65%;
+  width:100%;
+  color:#000000; //Text colour
+  background-color:#ffffff;
+  overflow:auto;
+  clear:both;
+}
+
+.middle_div{
+  float:left;
+  margin:1%;
+  width:34%;
+}
+
+.outside_div{
+  float:left;
+  margin:1%;
+  width:30%;
+}
+
+#index_bottom{
+  text-align:center;
+  min-height:5%;
+  max-height:5%;
+  clear:both;
+  color:#ffffff;
+  a{
+    color:#ffffff;
+  }
+}
+
+.index_entry{
+  border-style:inset;
+  border-width:2px;
+}
+
+#login{
+  border-style:outset;
+  border-width:2px;
+}
+
+label {
+    display: block;
+    width: 30%;
+    float: left;
+    text-align: right;
+}
+
+.signup_input:hover{
+    background: #FFFFAA;
+}
+
+:focus{
+  background: #C4C6F8;
+}
