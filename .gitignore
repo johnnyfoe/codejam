@@ -14,7 +14,7 @@
 **/*.orig
 **/rerun.txt
 **/pickle-email-*.html
-**/*/._redcar
-**/source/._redcar
+/rails_prototype/._redcar
+/source/._redcar
 **/.project
 **/server.pid
