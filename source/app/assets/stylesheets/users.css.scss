@@ -1,0 +1,26 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid #eaeaea;
+    &:first-child{
+      border: 0;
+      padding-top: 0;
+    }
+    h1 {
+      float: right;
+      font-size: 1.6em;
+      text-align: right;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+.gravatar {
+  margin-right: 10px;
+  margin-left: 5px;
+}

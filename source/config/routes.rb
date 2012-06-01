@@ -1,7 +1,17 @@
-Source::Application.routes.draw do
-  get "user/profile"
+Prototype::Application.routes.draw do
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
-  get "user/register"
+  root :to => 'home#index'
+  
+  match '/about', to: 'home#about'
+  match '/help', to: 'home#help'
+  match '/contact', to: 'home#contact'
+  match '/legal', to: 'home#legal'
+  match '/privacy', to: 'home#privacy'
+  match '/signup', to: 'home#index'
+  match '/signin', to: 'home#index'
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +62,6 @@ Source::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

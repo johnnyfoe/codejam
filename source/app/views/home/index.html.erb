@@ -1,0 +1,57 @@
+<% if signed_in? %>
+<section id="index_middle">
+	<p>
+		User page, yay.
+	</p>
+</section>
+<% else %>
+<section id="index_middle">
+	<section class="outside_div">
+		<p>Featured Jam</p>
+		<hr/>
+		<p>
+			Promoted Jam, somone has paid to put it here.
+		<br /><br />
+			Or a monthly thing or something.
+		</p>
+	</section>
+	
+	<section class="middle_div">
+		<p>Orphan Jam</p>
+		<hr/>
+		<p>
+			FOSS projects that we want to draw peoples attention to.
+		<br /><br />
+			Have it on a rotation so that different projects are displayed every X seconds.
+		</p>
+	</section>
+	
+	<section class="outside_div">
+		<p>Sign Up</p>
+		<hr/>
+		<div id="signup">
+			<% @user = User.new%>
+			<%= form_for(@user) do |f|%>
+			<%= render 'shared/error_messages'%>
+				<%= f.label :first_name, "First name"%>
+				<%= f.text_field :first_name%>
+				
+				<%= f.label :surname, "Surname"%>
+				<%= f.text_field :surname%>
+				
+				<%= f.label :email, "Signup Email"%>
+				<%= f.text_field :email%>
+				
+				<%= f.label :password, "New Password"%>
+				<%= f.password_field :password%>
+				
+				<%= f.label :password_confirmation, "Confirmation"%>
+				<%= f.password_field :password_confirmation%>
+				
+				<%= f.label :signup ,"Sign up"%>
+				<%= f.submit "Create my account", class:"btn btn-medium btn-primary"%>
+			<% end %>
+		</div>
+	</section>
+</section>
+<% end %>
