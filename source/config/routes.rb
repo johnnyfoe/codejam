@@ -1,4 +1,6 @@
 Prototype::Application.routes.draw do
+  get "ratings/new"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 

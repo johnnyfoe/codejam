@@ -57990,3 +57990,31 @@ Served asset /application.js - 304 Not Modified (2ms)
 
 Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2012-06-01 20:59:36 +0100
 Served asset /sessions.js - 304 Not Modified (0ms)
+  [1m[36m (0.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120530213552)
+Migrating to AddIndexToUserEmail (20120531084822)
+Migrating to AddPasswordDigestToUsers (20120531085834)
+Migrating to AddRememberTokenToUsers (20120531160119)
+Migrating to AddAdminToUsers (20120601141344)
+Migrating to CreateRatings (20120601212230)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (1.0ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20120530213552)
+Migrating to AddIndexToUserEmail (20120531084822)
+Migrating to AddPasswordDigestToUsers (20120531085834)
+Migrating to AddRememberTokenToUsers (20120531160119)
+Migrating to AddAdminToUsers (20120601141344)
+Migrating to CreateRatings (20120601212230)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "ratings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" varchar(255), "project_id" varchar(255), "code_quality" integer, "effort" integer, "communication_skills" integer, "code_quality_just" varchar(255), "effort_just" varchar(255), "communication_skills_just" varchar(255), "general" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20120601212230')[0m
+  [1m[35m (155.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("ratings")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36m (1.0ms)[0m  [1mPRAGMA index_info('index_users_on_remember_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
