@@ -78,6 +78,7 @@ describe "Home" do
     before { visit signin_path }
     
     describe "with invalid information" do
+      
       before { click_button "Sign in" }
        
       it { should have_selector( 'div.alert.alert-error', text: 'Invalid')}
@@ -96,8 +97,8 @@ describe "Home" do
       end
         
       it { should have_selector('title', text: user.first_name) }
-      it { should have_link('Profile', href: user_path(user) ) }
-      it { should have_link('Settings', href: edit_user_path(user) ) }
+      it { should have_link('Profile', href: user_path(user.pseudonym) ) }
+      it { should have_link('Settings', href: edit_user_path(user.pseudonym) ) }
       it { should have_link('Sign out', href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
       
@@ -139,6 +140,7 @@ describe "Home" do
             page.should have_selector('title', test: 'Edit_user')
           end
         end
+        
       end
       
       describe "in the Users controller" do
@@ -186,8 +188,8 @@ describe "Home" do
       it { should have_selector('title', text: user.first_name) }
       
       it { should have_link('Users', href: users_path ) }
-      it { should have_link('Profile', href: user_path(user) ) }
-      it { should have_link('Settings', href: edit_user_path(user) ) }
+      it { should have_link('Profile', href: user_path(user.pseudonym) ) }
+      it { should have_link('Settings', href: edit_user_path(user.pseudonym) ) }
       it { should have_link('Sign out', href: signout_path ) }
       
       it { should_not have_link('Sign in', href: signin_path)}

@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: {minimum: 6}
   validates :password_confirmation, presence: true
-  VALID_ALIAS_REGEX = /^(\w{0,})$/
-  validates :pseudonym, length: {maximum: 50}, 
-    format: {with: VALID_ALIAS_REGEX}, uniqueness: { case_sensative: true}
+  VALID_ALIAS_REGEX = /^(\w{3,})$/
+  validates :pseudonym, presence: true, length: {maximum: 50}, 
+    format: {with: VALID_ALIAS_REGEX}, uniqueness: { case_sensitive: true}
   
   private
   

@@ -9,7 +9,7 @@
 			<div class="avatar_div">
 				<div class="stack">
 					<div class="top">
-						<h1 id="avatar_name"><%= link_to "#{current_user.first_name} #{current_user.surname}", current_user %></h1>
+						<h1 id="avatar_name"><%= link_to "#{current_user.first_name} #{current_user.surname}", user_path(current_user.pseudonym) %></h1>
 					</div>
 					<div class="dropdown_div bottom">
 						<ul>
@@ -17,8 +17,8 @@
 							<li id="fat-menu" class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><%= link_to "Profile", current_user %></li>	
-									<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+									<li><%= link_to "Profile", user_path(current_user.pseudonym)%></li>	
+									<li><%= link_to "Settings", edit_user_path(current_user.pseudonym) %></li>
 									<li class="divider"></li>
 									<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
 								</ul>

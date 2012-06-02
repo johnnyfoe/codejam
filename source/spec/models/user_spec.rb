@@ -68,17 +68,17 @@ describe User do
   
   describe "finding a user by their pseudonym" do
     before{ @user.save }
-    let( :found_user ) {User.find( @user.pseudonym ) }
+    let( :found_user ) {User.find_by_pseudonym( @user.pseudonym ) }
     
-    it { should be_valid }
+    it { should == found_user}
   end
   
   describe "return value of authenticate method" do
     before { @user.save }
     let(:found_user) { User.find_by_email(@user.email) }
-    subject( :found_user )
+
     describe "with valid password" do
-      it { should == found_user.authenticate(@user.password)}
+      it { should == found_user.authenticate(@user.password) }
     end
     
     describe "with invalid password" do
