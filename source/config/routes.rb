@@ -16,6 +16,7 @@ Prototype::Application.routes.draw do
   get "ratings/new"
 
   resources :users
+  resources :projects
   resources :sessions, only: [:new, :create, :destroy]
 
   root :to => 'home#index'
