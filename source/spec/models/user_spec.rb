@@ -14,7 +14,7 @@ require 'spec_helper'
 
 describe User do
   before { @user = User.new(first_name: "Example", surname: "User", email: "user@example.com",
-    password: "foobar", password_confirmation: "foobar")}
+    password: "foobar", password_confirmation: "foobar", pseudonym: "User")}
   subject { @user }
   it { should respond_to(:first_name) }
   it { should respond_to(:surname) }
@@ -25,6 +25,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:pseudonym) }
   
   it { should be_valid }
   it { should_not be_admin}
@@ -91,6 +92,15 @@ describe User do
       user_with_same_email = @user.dup
       user_with_same_email.email = @user.email.upcase
       user_with_same_email.save
+    end
+    it { should_not be_valid }
+  end
+  
+  describe "when alias is already taken" do
+    before do
+      user_with_same_pseudonym = @user.dup
+      user_with_same_pseudonym.pseudonym = @user.pseudonym.upcase
+      user_with_same_pseudonym.save
     end
     it { should_not be_valid }
   end

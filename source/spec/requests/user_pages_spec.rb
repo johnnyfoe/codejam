@@ -88,11 +88,13 @@ describe "UserPages" do
       let(:new_first_name) { "New" }
       let(:new_surname) { "Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_pseudonym) { "New_User"}
       
       before do
         fill_in "First name", with: new_first_name
         fill_in "Surname", with: new_surname
         fill_in "Email", with: new_email
+        fill_in "Pseudonym", with: new_pseudonym
         fill_in "Password", with: user.password
         fill_in "Confirm Password", with: user.password
         click_button "Save changes"
@@ -103,6 +105,7 @@ describe "UserPages" do
       it { should have_link('Sign out', href: signout_path) }
       specify{ user.reload.first_name.should == new_first_name }
       specify{ user.reload.surname.should == new_surname }
+      specify{ user.reload.pseudonym.should == new_pseudonym }
       specify{ user.reload.email.should == new_email }
     end
     

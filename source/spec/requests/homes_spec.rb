@@ -52,7 +52,7 @@ describe "Home" do
     
     describe "with valid information" do
       before do
-        fill_in "First name", with:"Example"
+        fill_in "First name", with:"Example middle"
         fill_in "Surname", with:"User"
         fill_in "Signup Email", with:"user@codej.am"
         fill_in "New Password", with: "foobar"
