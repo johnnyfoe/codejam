@@ -32,21 +32,27 @@ class UsersController < ApplicationController
   #This function creates a user.
   #As a pseudonym is not required for sign up, but is required to make a user, one is generated from the users first
   #and second name. All spaces are removed and replaced with underscores.
-    
-  #To do:
-    #Find a better way to replace the spaces, regex is probably the best way but I don't know how to do a global replace in ruby
   def create
     @user = User.new(params[:user])
     full_name = "#{@user.first_name} #{@user.surname}"
-    while !full_name.match(/\ /).nil? do
-      full_name[" "] = "_"
+    full_name = full_name.gsub(" ", "_")
+    count = 0
+    while !( ( User.find_by_pseudonym("#{full_name}") ).nil? ) do
+      count += 1
+      puts count
+      if( full_name.index(/_(\d+)/).nil? ) 
+        full_name = full_name + "_#{count}"
+      else
+        full_name = full_name.gsub!(/_(\d+)$/, "_#{count}")
+      end
     end
     @user.pseudonym = full_name
+    
     if @user.save
       # handle a successful save
       sign_in @user
       flash[:success] = "Welcome to Codej.am! Before you get started you might want to change your aliases in settings."
-      redirect_to @user
+      redirect_to user_path(@user.pseudonym)
     else
       render 'home/index'
     end
