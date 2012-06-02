@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Rating do
   #pending "add some examples to (or delete) #{__FILE__}"
-  
-  before do @rating = Rating.new(user_id: "1", project_id: "1", code_quality: 2, 
+  let(:user) { FactoryGirl.create(:user) }
+  before do @rating = user.ratings.build(project_id: "1", code_quality: 2, 
     code_quality_just: "messy code, poorly commented", effort: 2, effort_just: "lazy",
     communication_skills: 1, communication_skills_just: "never spoke",
     general: "poor programmer, would not recommend") 
