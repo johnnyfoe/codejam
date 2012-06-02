@@ -3,7 +3,7 @@
 	<aside>
 		<h1 id="avatar_name"><%= gravatar_for @user%><%= @user.first_name %> <%= @user.surname %>, <%= @user.email %></h1>
 	</aside>
-	
+	<div class="row">
 	<div class="span8">
 		<% if @user.ratings.any? %>
 		<h3>Ratings (<%= @user.ratings.count %>)</h3>
@@ -13,5 +13,5 @@
 		<%= will_paginate @ratings %>
 		<% end %>
     </div>
-  
+   </div>
 </section>
