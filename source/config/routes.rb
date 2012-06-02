@@ -1,4 +1,18 @@
 Prototype::Application.routes.draw do
+  get "projects/index"
+
+  get "projects/create"
+
+  get "projects/edit"
+
+  get "projects/contributors"
+
+  get "projects/skills"
+
+  get "projects/interests"
+
+  get "projects/search"
+
   get "ratings/new"
 
   resources :users
@@ -6,6 +20,8 @@ Prototype::Application.routes.draw do
 
   root :to => 'home#index'
   
+  match '/projects', to: 'projects#index'
+  match '/projects/create', to: 'projects#create'
   match '/about', to: 'home#about'
   match '/help', to: 'home#help'
   match '/contact', to: 'home#contact'

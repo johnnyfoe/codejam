@@ -11,13 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601212628) do
+ActiveRecord::Schema.define(:version => 20120602001521) do
 
   create_table "interests", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "status"
+    t.string   "tagline"
+    t.string   "description"
+    t.integer  "skill_id"
+    t.string   "repository"
+    t.string   "visibility"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "owner"
   end
 
   create_table "ratings", :force => true do |t|
@@ -33,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20120601212628) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "ratings", ["user_id", "created_at"], :name => "index_ratings_on_user_id_and_created_at"
 
   create_table "skills", :force => true do |t|
     t.string   "name"
