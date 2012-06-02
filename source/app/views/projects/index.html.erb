@@ -1,0 +1,43 @@
+<div class="clear">
+  <h1>List of projects</h1>
+  <div class="projectsTable">
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Repo Location</th>
+      </thead>
+      <tbody>
+    <% @projectList.each do |proj| %>
+    <tr>
+      <td><a href="/projects/<%= proj.id %>"><%= proj.name %></a></td>
+      <td><%= proj.description %></td>
+      <td><a href="<%= proj.repository %>"><%= proj.repository %></a></td>
+    </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </div>
+  <div>
+  	<section class="outside_div">
+  		<p>Create Project</p>
+  		<hr/>
+  		<div id="createProject">
+  			<% @project = Project.new %>
+  			<%= form_for(@project, :url => {:action => "create"}) do |f| %>
+    			<!--%= render 'shared/error_messages' %-->
+  				<%= f.label :name, "Project name" %>
+  				<%= f.text_field :name %>
+
+  				<%= f.label :tagline, "Tagline" %>
+  				<%= f.text_field :tagline %>
+
+  				<%= f.label :repository, "Code Repository Location" %>
+  				<%= f.text_field :repository %>
+  				
+  				<%= f.submit "create", class:"btn btn-medium btn-primary"%>
+  			<% end %>
+  		</div>
+  	</section>
+  </div>
+<div>
