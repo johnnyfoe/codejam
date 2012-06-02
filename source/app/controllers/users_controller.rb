@@ -4,7 +4,12 @@ class UsersController < ApplicationController
   before_filter :admin_user, only: :destroy
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+    if @user.nil?
+        flash[:error] = "User with id #{params[:id]} does not exist."
+        redirect_to root_path
+    end
+    return @user
   end
   
   def new

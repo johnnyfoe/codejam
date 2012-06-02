@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20120602001521) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "ratings", ["user_id", "created_at"], :name => "index_ratings_on_user_id_and_created_at"
+
   create_table "skills", :force => true do |t|
     t.string   "name"
     t.string   "description"
