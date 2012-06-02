@@ -22,3 +22,4 @@ source/db/*.sqlite3
 source/log/*.log
 source/tmp/*
 .project
+*~
