@@ -3,4 +3,15 @@
 	<aside>
 		<h1 id="avatar_name"><%= gravatar_for @user%><%= @user.first_name %> <%= @user.surname %>, <%= @user.email %></h1>
 	</aside>
+	
+	<div class="span8">
+		<% if @user.ratings.any? %>
+		<h3>Ratings (<%= @user.ratings.count %>)</h3>
+		<ol class="ratings">
+			<%= render @ratings %>
+		</ol>
+		<%= will_paginate @ratings %>
+		<% end %>
+    </div>
+  
 </section>

@@ -61,8 +61,16 @@ describe "UserPages" do
   describe "profile page" do
     # Code to make a user variable
     let(:user) { FactoryGirl.create(:user) }
+	let!(:m1) { FactoryGirl.create(:micropost, user: user, effort: "1") }
+	let!(:m1) { FactoryGirl.create(:micropost, user: user, effort: "3") }
     before { visit user_path(user) }
     it { should have_selector('h1', text: "#{user.first_name} #{user.surname}")}
+	
+	describe "microposts" do
+      it { should have_content(m1.effort) }
+      it { should have_content(m2.effort) }
+      it { should have_content(user.ratings.count) }
+    end
   end
   
   describe "edit" do
@@ -107,5 +115,6 @@ describe "UserPages" do
     end
     
   end
+  
   
 end

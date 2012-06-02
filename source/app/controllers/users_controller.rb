@@ -9,6 +9,7 @@ class UsersController < ApplicationController
         flash[:error] = "User with id #{params[:id]} does not exist."
         redirect_to root_path
     end
+	@ratings = @user.ratings.paginate(page: params[:page])
     return @user
   end
   

@@ -16,4 +16,16 @@ FactoryGirl.define do
 	sequence(:tagline) { |n| "Tagline #{n}" }
 	sequence(:description) { |n| "Description #{n}" }
   end
+  
+   factory :rating do
+    effort 2
+	code_quality 2
+	communication_skills 1
+	effort_just "lazy"
+	code_quality_just "messy code, poorly commented"
+	communication_skills_just "never spoke"
+	general "poor programmer, would not recommend"
+	user
+	project
+  end
 end
