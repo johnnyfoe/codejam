@@ -14,10 +14,18 @@ namespace :db do
       email = "example-#{n+1}@railstutorial.org"
       password = "password"
       User.create!(first_name: first_name,
-        surname: surname,
+        surname: second_name,
         email: email,
         password: password,
         password_confirmation: password)
-    end
+	end
+	users = User.all(limit: 6)
+    50.times do |n|
+      project = Project.create!(name: "Project Test #{n}", status: "Inactive", tagline: "test project", description: "this is a test project")
+      users.each { |user| user.ratings.create!(project_id: project.id, code_quality: 2, 
+    code_quality_just: "messy code, poorly commented", effort: 2, effort_just: "lazy",
+    communication_skills: 1, communication_skills_just: "never spoke",
+    general: "poor programmer, would not recommend") }
+	end
   end
 end

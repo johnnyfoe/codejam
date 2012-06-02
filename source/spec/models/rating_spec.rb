@@ -105,7 +105,9 @@ describe Rating do
       end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end    	
   end
-   
+  
+
+  
 end
 
 

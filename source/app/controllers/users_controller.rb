@@ -11,15 +11,18 @@ class UsersController < ApplicationController
     #Update so that users can be found by pseudonym as well as by id
   def show
     @user = User.find_by_id(params[:id])
+
     if !@user.nil?
       @ratings = @user.ratings.paginate(page: params[:page])
       return @user
     end
+	
     @user = User.find_by_pseudonym(params[:id])
     if !@user.nil?
       @ratings = @user.ratings.paginate(page: params[:page])
       return @user
     end
+	
     flash[:error] = "User #{params[:id]} does not exist."
     redirect_to root_path
   end
