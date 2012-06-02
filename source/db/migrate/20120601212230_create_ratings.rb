@@ -1,8 +1,8 @@
 class CreateRatings < ActiveRecord::Migration
   def change
     create_table :ratings do |t|
-      t.string :user_id
-      t.string :project_id
+      t.references :users
+      t.references :projects
       t.integer :code_quality
       t.integer :effort
       t.integer :communication_skills
@@ -13,6 +13,7 @@ class CreateRatings < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :ratings, [:user_id, :created_at]
+    add_index :ratings, [:users, :created_at]
+	add_index "ratings", ["projects", "created_at"], :name => "index_ratings_on_project_id_and_created_at"
   end
 end

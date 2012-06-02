@@ -12,5 +12,8 @@ FactoryGirl.define do
   end
   factory :project do
     sequence(:name) { |n| "Project #{n}" }
+	sequence(:status) { |n| "Status #{n}" }
+	sequence(:tagline) { |n| "Tagline #{n}" }
+	sequence(:description) { |n| "Description #{n}" }
   end
 end

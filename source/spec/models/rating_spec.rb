@@ -3,10 +3,13 @@ require 'spec_helper'
 describe Rating do
   #pending "add some examples to (or delete) #{__FILE__}"
   let(:user) { FactoryGirl.create(:user) }
-  before do @rating = user.ratings.build(project_id: "1", code_quality: 2, 
+  let(:project) { FactoryGirl.create(:project) }
+  #Possible security issue, user_id and project_id should not be accessible
+  #Can build association with one but not two - see tutorial ch10.1.3
+  before do @rating = user.ratings.build(project_id: project.id, code_quality: 2, 
     code_quality_just: "messy code, poorly commented", effort: 2, effort_just: "lazy",
     communication_skills: 1, communication_skills_just: "never spoke",
-    general: "poor programmer, would not recommend") 
+    general: "poor programmer, would not recommend") 	
   end
     
   subject { @rating }
@@ -20,8 +23,12 @@ describe Rating do
   it { should respond_to(:communication_skills) }
   it { should respond_to(:communication_skills_just) }
   it { should respond_to(:general) }
-
-
+  
+  it { should respond_to(:user) }
+  it { should respond_to(:project) }
+  its(:user) { should == user }
+  it { should be_valid }
+  
   describe "when general is too long" do
       before { @rating.general = "a" * 141 }
     it { should_not be_valid }
@@ -86,8 +93,19 @@ describe Rating do
       end      
     end
    end
-  
-  
+  describe "accessible attributes" do
+    it "should not allow access to user_id" do
+      expect do
+        Rating.new(user_id: user.id)
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end  
+	it "should not allow access to project_id" do
+      expect do
+        Rating.new(project_id: project.id)
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end    	
+  end
+   
 end
 
 
