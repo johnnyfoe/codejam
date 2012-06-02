@@ -61,8 +61,16 @@ describe "UserPages" do
   describe "profile page" do
     # Code to make a user variable
     let(:user) { FactoryGirl.create(:user) }
+	let!(:m1) { FactoryGirl.create(:micropost, user: user, effort: "1") }
+	let!(:m1) { FactoryGirl.create(:micropost, user: user, effort: "3") }
     before { visit user_path(user) }
     it { should have_selector('h1', text: "#{user.first_name} #{user.surname}")}
+	
+	describe "microposts" do
+      it { should have_content(m1.effort) }
+      it { should have_content(m2.effort) }
+      it { should have_content(user.ratings.count) }
+    end
   end
   
   describe "edit" do
@@ -88,11 +96,13 @@ describe "UserPages" do
       let(:new_first_name) { "New" }
       let(:new_surname) { "Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_pseudonym) { "New_User"}
       
       before do
         fill_in "First name", with: new_first_name
         fill_in "Surname", with: new_surname
         fill_in "Email", with: new_email
+        fill_in "Pseudonym", with: new_pseudonym
         fill_in "Password", with: user.password
         fill_in "Confirm Password", with: user.password
         click_button "Save changes"
@@ -103,9 +113,11 @@ describe "UserPages" do
       it { should have_link('Sign out', href: signout_path) }
       specify{ user.reload.first_name.should == new_first_name }
       specify{ user.reload.surname.should == new_surname }
+      specify{ user.reload.pseudonym.should == new_pseudonym }
       specify{ user.reload.email.should == new_email }
     end
     
   end
+  
   
 end
