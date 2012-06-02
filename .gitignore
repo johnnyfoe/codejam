@@ -18,9 +18,9 @@
 /source/._redcar
 **/.project
 **/server.pid
-source/db/*.sqlite3
-source/log/*.log
-source/tmp/*
+/source/db/*.sqlite3
+/source/log/*.log
+/source/tmp/*
 .project
 *~
-source/log/*
+/source/log/*
