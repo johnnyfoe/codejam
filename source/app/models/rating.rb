@@ -1,10 +1,6 @@
 class Rating < ActiveRecord::Base
   attr_accessible :code_quality, :code_quality_just, :communication_skills, :communication_skills_just, :effort, :effort_just, :general, :project_id, :user_id
-  
-  
-  #VALID_RATING_REGEX = /[1-5]
-    
-    
+      
   validates :general, length: { maximum: 140 }
   validates :user_id, presence: true
   validates :project_id, presence: true
