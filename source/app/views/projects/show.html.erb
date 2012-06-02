@@ -1,0 +1,28 @@
+<% provide(:title, "Project " + @project.name)%>
+<h1>Project <%= @project.name %></h1>
+<div>
+	<section class="outside_div">
+		<p>Project details</p>
+		<hr/>
+		<div id="showProject">
+    	<p>Project Owner - <%= @project.owner %></p>
+
+    	<p>Project Status - <%= @project.status %></p>
+  		
+      <p>Project name - <%= @project.name %></p>
+
+			<p>Tagline - <%= @project.tagline %></p>
+
+			<p>Interests -
+			<% @project.interests.each do |c| %>
+			<%= c.name %><br/>
+			<% end %>  
+			</p>
+
+      <p>Code Repository Location - <%= @project.repository %></p>
+			
+      <p>Skills required - <%= "fetch skills from database" %></p>
+      <p>Project visibility - <%= @project.visibility %></p>
+		</div>
+	</section>
+</div>

@@ -1,2 +1,47 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<% provide(:title, "Edit project - " + @project.name)%>
+<h1>Edit project - <%= @project.name %></h1>
+<div>
+	<section class="outside_div">
+		<p>Edit Project</p>
+		<hr/>
+		<div id="editProject">
+			<%= form_for(@project, :url => {:action => "update"}) do |f| %>
+  			<!--%= render 'shared/error_messages' %-->
+  			<!--
+  			:description
+  			:name
+  			:repository
+  			:skills
+  			:status
+  			:tagline
+  			:visibility
+  			:owner
+		    -->
+
+	    	<%= f.label :owner, "Project Lead" %>
+    		<%= f.text_field :owner, :value => @project.owner %>
+
+	    	<%= f.label :status, "Project Status" %>
+    		<%= f.text_field :status, :value => @project.status %>
+    		
+				<%= f.label :name, "Project name" %>
+				<%= f.text_field :name, :value => @project.name %>
+
+				<%= f.label :tagline, "Tagline" %>
+				<%= f.text_field :tagline, :value => @project.tagline %>
+
+				<%= f.label :repository, "Code Repository Location" %>
+				<%= f.text_field :repository, :value => @project.repository %>
+				
+	    	<%= f.label :skills, "Skills required" %>
+    		<%= f.text_field :skills, :value => "fetch skills from database" %>
+        
+    		<%= f.label :visibility, "Project visibility [private, public, invite only]" %>
+    		<%= f.text_field :visibility, :value => @project.name %>
+        
+				
+				<%= f.submit "edit", class:"btn btn-medium btn-primary"%>
+			<% end %>
+		</div>
+	</section>
+</div>

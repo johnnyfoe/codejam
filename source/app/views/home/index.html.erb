@@ -30,7 +30,9 @@
 		<p>Sign Up</p>
 		<hr/>
 		<div id="signup">
-			<% @user = User.new%>
+			<% if @user.nil? %>
+			<% @user = User.new %>
+			<% end %>
 			<%= form_for(@user) do |f|%>
 			<%= render 'shared/error_messages'%>
 				<%= f.label :first_name, "First name"%>
