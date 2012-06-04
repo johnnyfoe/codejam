@@ -5,7 +5,8 @@ namespace :db do
       surname: "User",
       email: "example@railstutorial.org",
       password: "foobar",
-      password_confirmation: "foobar")
+      password_confirmation: "foobar",
+	  pseudonym: "admin1")
     admin.toggle!(:admin)
     
     99.times do |n|
@@ -17,7 +18,8 @@ namespace :db do
         surname: second_name,
         email: email,
         password: password,
-        password_confirmation: password)
+        password_confirmation: password,
+		pseudonym: "test#{n}")
 	end
 	users = User.all(limit: 6)
     50.times do |n|
