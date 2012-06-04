@@ -1,37 +1,29 @@
-<hr/>
-<header id="index_top">
-	<div id="index_header">
-		<h1><%= link_to "{Logo Here} Codej.am Prototype",  root_path, name: "Home"%></h1>
-		<p> P.S., I hate CSS</p>
+<header id="top_bar">
+	<div id="site_logo">
+		<h1><%= link_to "Codej.am Prototype",  root_path, name: "Home"%></h1>
 	</div>
 	<% if signed_in? %>
-		<aside>
-			<div class="avatar_div">
-				<div class="stack">
-					<div class="top">
-						<h1 id="avatar_name"><%= link_to "#{current_user.first_name} #{current_user.surname}", user_path(current_user.pseudonym) %></h1>
-					</div>
-					<div class="dropdown_div bottom">
-						<ul>
-							<li><%= link_to "Users", users_path %>
-							<li id="fat-menu" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><%= link_to "Profile", user_path(current_user.pseudonym)%></li>	
-									<li><%= link_to "Settings", edit_user_path(current_user.pseudonym) %></li>
-									<li class="divider"></li>
-									<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-								</ul>
-							</li>
+		<div class="user_nav">
+			<div class="dropdown_div bottom">
+				<ul class="nav_links">
+					<li><%= link_to "Users", users_path, class: "standout" %></li>
+					<li><%= link_to "Projects", projects_path, class: "standout" %></li>
+					<li id="fat-menu" class="dropdown"><a href="#" class="dropdown-toggle standout" data-toggle="dropdown">Account<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><%= link_to "#{current_user.first_name} #{current_user.surname}", user_path(current_user.pseudonym) %></li>	
+							<li><%= link_to "Settings", edit_user_path(current_user.pseudonym) %></li>
+							<li class="divider"></li>
+							<li><%= link_to "Sign out", signout_path, method: "delete" %></li>
 						</ul>
-					</div>
-				</div>
-				<div id="avatar_picture">
-					<h3> <%= gravatar_for current_user%></h3>
-				</div>
+					</li>
+				</ul>
 			</div>
-		</aside>
+			<div class="user_mini">
+  		  <%= link_to gravatar_for(current_user), edit_user_path(current_user.pseudonym) %>
+	    </div>
+		</div>
 	<% else %>
+	<div class="signinContainer">
 		<%= form_for(:session, url: sessions_path) do |f|%>
 		<div class="top_div">
 			<%= f.label :email%>
@@ -42,9 +34,9 @@
 			<%= f.password_field :password%>
 		</div>
 		<div class="top_div">
-			<p></p>
-			<%= f.submit "Sign in", class: "btn btn-medium btn-primary"%>
+			<%= f.submit "Sign in", class: "btn btn-medium btn-primary signin"%>
 		</div>
 		<% end %>
+	</div>
 	<% end %>
 </header>

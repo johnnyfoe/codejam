@@ -62,7 +62,7 @@ describe "UserPages" do
     # Code to make a user variable
     let(:user) { FactoryGirl.create(:user) }
 	let!(:m1) { FactoryGirl.create(:rating, user: user, effort: "1") }
-	let!(:m1) { FactoryGirl.create(:rating, user: user, effort: "3") }
+	let!(:m2) { FactoryGirl.create(:rating, user: user, effort: "3") }
     before { visit user_path(user) }
     it { should have_selector('h1', text: "#{user.first_name} #{user.surname}")}
 	

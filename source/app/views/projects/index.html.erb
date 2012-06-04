@@ -1,5 +1,6 @@
 <div class="clear">
   <h1>List of projects</h1>
+  <% if !@projectList.empty? %>
   <div class="projectsTable">
     <table>
       <thead>
@@ -18,26 +19,45 @@
     </tbody>
     </table>
   </div>
+  <% end %>
   <div>
-  	<section class="outside_div">
-  		<p>Create Project</p>
+  	<div class="outside_div">
+  		<h2>Create Project</h2>
   		<hr/>
   		<div id="createProject">
   			<% @project = Project.new %>
   			<%= form_for(@project, :url => {:action => "create"}) do |f| %>
     			<!--%= render 'shared/error_messages' %-->
-  				<%= f.label :name, "Project name" %>
-  				<%= f.text_field :name %>
+          <div class="editorSandbox">
+            <%= f.label :name, "Name", :class => 'projectFieldLabel' %>
+    				<%= f.text_field :name, :class => 'projectTextField' %>
+  				</div>
 
-  				<%= f.label :tagline, "Tagline" %>
-  				<%= f.text_field :tagline %>
+  				<div class="editorSandbox">
+  				  <%= f.label :tagline, "Tagline", :class => 'projectFieldLabel' %>
+  				  <%= f.text_field :tagline, :class => 'projectTextField'  %>
+				  </div>
 
-  				<%= f.label :repository, "Code Repository Location" %>
-  				<%= f.text_field :repository %>
+  				<div class="editorSandbox">
+  				  <%= f.label :repository, "Code Repository", :class => 'projectFieldLabel' %>
+    				<%= f.text_field :repository, :class => 'projectTextField'  %>
+  				</div>
+
+  				<div class="editorSandbox">
+    				<%= f.label :description, "Description", :class => 'projectFieldLabel' %>
+    				<%= f.text_area(:description, :cols => 40, :rows => 15, :class => 'descriptionBox') %>
+  				</div>
   				
-  				<%= f.submit "create", class:"btn btn-medium btn-primary"%>
+  				<div class="editorSandbox">
+  				  <%= f.label :interests, "Interests", :class => 'projectFieldLabel' %>
+    				<%= f.text_field :interests, :class => 'projectTextField'  %>
+  				</div>
+  				
+  				<div>
+    				<%= f.submit "Create Project", class:"btn btn-medium btn-primary"%>
+  				</div>
   			<% end %>
   		</div>
-  	</section>
+  	</div>
   </div>
 <div>
