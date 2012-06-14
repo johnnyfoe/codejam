@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(:version => 20120602174623) do
     t.string   "general"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
-  end
 
+  end
   add_index "ratings", ["project_id", "created_at"], :name => "index_ratings_on_project_id_and_created_at"
   add_index "ratings", ["user_id", "created_at"], :name => "index_ratings_on_user_id_and_created_at"
   add_index "ratings", ["user_id", "project_id"], :name => "index_ratings_on_user_id_and_project_id"

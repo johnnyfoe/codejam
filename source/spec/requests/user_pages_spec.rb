@@ -27,27 +27,36 @@ describe "UserPages" do
       end
     end
     
-    describe "delete links" do
+    
+    #These tests here need to be modified, on a user's setting page they should be able to delete themselves.
+    #This test should be in the other areas where settings are tested.
+    
+    #Test to be implemented:
+      #Navigate to some other user's settings page (I shouldn't be able to access this but try it anyway)
+      #Navigate to the current user's settings page. 
+      #Check to see if the user's setting page has a delete link/button
+      #Delete the user (Make sure the functionality works.)
+    #describe "delete links" do
       
-      it { should_not have_link('delete') }
+    #  it { should_not have_link('delete') }
       
-      describe "as an admin user" do
-        let(:admin) { FactoryGirl.create(:admin) }
+    #  describe "as an admin user" do
+    #    let(:admin) { FactoryGirl.create(:admin) }
         
-        before do
-          visit root_path
-          click_link('Sign out')
-          sign_in admin
-          visit users_path
-        end
+    #    before do
+    #      visit root_path
+    #      click_link('Sign out')
+    #      sign_in admin
+    #      visit users_path
+    #    end
         
-        it { should have_link('delete', href: user_path(User.first) ) }
-        it "should be able to delete another user" do
-          expect { click_link('delete') }.to change(User, :count).by(-1)
-        end
-        it { should_not have_link('delete', href: user_path(admin) ) }
-      end
-    end
+    #    it { should have_link('delete', href: user_path(User.first) ) }
+    #    it "should be able to delete another user" do
+    #      expect { click_link('delete') }.to change(User, :count).by(-1)
+    #    end
+    #    it { should_not have_link('delete', href: user_path(admin) ) }
+    #  end
+    #end
   end
   
   describe "signup page" do
@@ -84,6 +93,10 @@ describe "UserPages" do
       it { should have_selector('h1', text: "Update your profile")}
       it { should have_selector('title', text: "Edit user") }
       it { should have_link('change', href: 'http://gravatar.com/emails')}
+      it { should have_link('delete', href: user_path(user.pseudonym) ) }
+      it "should be able to delete current user" do
+        expect { click_link('delete') }.to change(User, :count).by(-1)
+      end
     end
     
     describe "with invalid information" do
@@ -115,6 +128,7 @@ describe "UserPages" do
       specify{ user.reload.surname.should == new_surname }
       specify{ user.reload.pseudonym.should == new_pseudonym }
       specify{ user.reload.email.should == new_email }
+
     end
     
   end
