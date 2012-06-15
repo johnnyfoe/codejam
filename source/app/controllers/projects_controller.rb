@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   def index
-    if !params[:id].nil?
-      @project = Project.find_by_id(params[:id])
-      if !@project.nil?
-        redirect_to "/projects/view"
-      end
-    end
+    # if !params[:id].nil?
+    #   @project = Project.find_by_id(params[:id])
+    #   if !@project.nil?
+    #     redirect_to "/projects/view"
+    #   end
+    # end
     # Haven't found a clean way to do "SELECT * FROM PROJECTS" yet, but that's what this outputs!
     @projectList = Project.where("")
   end

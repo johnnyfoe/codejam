@@ -15,7 +15,10 @@ $grayMediumLight: #eaeaea;
   margin-top: 45px;
   @include box_sizing;
 }
-
+hr.displayBox
+{
+	margin: 3px 0;
+}
 #error_explanation {
   color: #f00;
   ul {

@@ -1,5 +1,6 @@
 class Interest < ActiveRecord::Base
-  attr_accessible :description, :id, :name
+  attr_accessible :description, :id, :name, :familiarity
   
-  has_and_belongs_to_many :projects  #, :class_name => 'Project'
+  has_many :projectToInterestAssociations
+  has_many :projects, :through => :projectToInterestAssociations
 end

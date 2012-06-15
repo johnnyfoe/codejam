@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602174623) do
+ActiveRecord::Schema.define(:version => 20120615193914) do
 
   create_table "interests", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20120602174623) do
   create_table "interests_projects", :id => false, :force => true do |t|
     t.integer "interest_id"
     t.integer "project_id"
+  end
+
+  create_table "project_to_interest_associations", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "interest_id"
+    t.integer  "skill_required"
+    t.string   "comment"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -52,9 +61,7 @@ ActiveRecord::Schema.define(:version => 20120602174623) do
     t.datetime "updated_at",                :null => false
   end
 
-  add_index "ratings", ["project_id", "created_at"], :name => "index_ratings_on_project_id_and_created_at"
   add_index "ratings", ["user_id", "created_at"], :name => "index_ratings_on_user_id_and_created_at"
-  add_index "ratings", ["user_id", "project_id"], :name => "index_ratings_on_user_id_and_project_id"
 
   create_table "skills", :force => true do |t|
     t.string   "name"

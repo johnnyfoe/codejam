@@ -11,9 +11,9 @@
       <tbody>
     <% @projectList.each do |proj| %>
     <tr>
-      <td><a href="/projects/<%= proj.id %>"><%= proj.name %></a></td>
+      <td><%= link_to proj.name, project_path(proj), class: "standout" %></td>
       <td><%= proj.description %></td>
-      <td><a href="<%= proj.repository %>"><%= proj.repository %></a></td>
+      <td><%= proj.repository %></td>
     </tr>
     <% end %>
     </tbody>
@@ -47,11 +47,11 @@
     				<%= f.label :description, "Description", :class => 'projectFieldLabel' %>
     				<%= f.text_area(:description, :cols => 40, :rows => 15, :class => 'descriptionBox') %>
   				</div>
-  				
+  				<!--
   				<div class="editorSandbox">
   				  <%= f.label :interests, "Interests", :class => 'projectFieldLabel' %>
     				<%= f.text_field :interests, :class => 'projectTextField'  %>
-  				</div>
+  				</div>-->
   				
   				<div>
     				<%= f.submit "Create Project", class:"btn btn-medium btn-primary"%>

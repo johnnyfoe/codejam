@@ -4,7 +4,8 @@ class Project < ActiveRecord::Base
   # has_many :users #contributors
   #  has_many :skills
   # belongs_to :user #owner
-  has_and_belongs_to_many :interests  #, :class_name => 'Interest'
+  has_many :projectToInterestAssociations
+  has_many :interests, :through => :projectToInterestAssociations  #, :class_name => 'Interest'
   
   has_many :ratings, dependent: :destroy
   validates :name, presence: true, uniqueness: {case_sensitive: false}
