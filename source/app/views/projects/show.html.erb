@@ -1,28 +1,31 @@
-<% provide(:title, "Project " + @project.name)%>
-<h1>Project <%= @project.name %></h1>
+<% provide(:title, "Project: " + @project.name)%>
+<h1><%= @project.name %></h1>
+<% if !@project.tagline.nil? %>
+<h5><%= @project.tagline %></h5>
+<% end %>
 <div>
 	<section class="outside_div">
-		<p>Project details</p>
-		<hr/>
+		<p>Project Details - <%= link_to "Edit Project", project_path(@project), method: :edit, class: "standout" %></p>
+		<hr class="displayBox" />
 		<div id="showProject">
     	<p>Project Owner - <%= @project.owner %></p>
-
+      <hr class="displayBox" />
     	<p>Project Status - <%= @project.status %></p>
-  		
+      <hr class="displayBox" />
       <p>Project name - <%= @project.name %></p>
-
-			<p>Tagline - <%= @project.tagline %></p>
-
+      <hr class="displayBox" />
 			<p>Interests -
 			<% @project.interests.each do |c| %>
 			<%= c.name %><br/>
 			<% end %>  
 			</p>
-
+      <hr class="displayBox" />
       <p>Code Repository Location - <%= @project.repository %></p>
-			
+      <hr class="displayBox" />
       <p>Skills required - <%= "fetch skills from database" %></p>
+      <hr class="displayBox" />
       <p>Project visibility - <%= @project.visibility %></p>
 		</div>
+		
 	</section>
 </div>
